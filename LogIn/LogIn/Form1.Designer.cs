@@ -158,6 +158,7 @@
             BtnLogin.TabIndex = 9;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = false;
+            BtnLogin.Click += BtnLogin_Click;
             // 
             // TxtPasswordLogin
             // 
@@ -201,6 +202,7 @@
             BtnRegister.TabIndex = 10;
             BtnRegister.Text = "Register";
             BtnRegister.UseVisualStyleBackColor = false;
+            BtnRegister.Click += BtnRegister_Click;
             // 
             // TxtPasswordRegisterRepeated
             // 
