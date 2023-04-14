@@ -36,11 +36,13 @@
             label6 = new Label();
             label7 = new Label();
             panel1 = new Panel();
-            BtnShowPassword = new Button();
+            BtnShowpasswordLogin = new Button();
             BtnLogin = new Button();
             TxtPasswordLogin = new TextBox();
             TxtUserLogin = new TextBox();
             panel2 = new Panel();
+            BtnShowpasswordRepeat = new Button();
+            BtnShowpasswordRegister = new Button();
             BtnRegister = new Button();
             TxtPasswordRegisterRepeated = new TextBox();
             TxtPasswordRegister = new TextBox();
@@ -124,7 +126,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(BtnShowPassword);
+            panel1.Controls.Add(BtnShowpasswordLogin);
             panel1.Controls.Add(BtnLogin);
             panel1.Controls.Add(TxtPasswordLogin);
             panel1.Controls.Add(TxtUserLogin);
@@ -136,17 +138,17 @@
             panel1.Size = new Size(268, 308);
             panel1.TabIndex = 7;
             // 
-            // BtnShowPassword
+            // BtnShowpasswordLogin
             // 
-            BtnShowPassword.BackColor = Color.Linen;
-            BtnShowPassword.Font = new Font("Bahnschrift Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnShowPassword.Location = new Point(115, 105);
-            BtnShowPassword.Name = "BtnShowPassword";
-            BtnShowPassword.Size = new Size(48, 23);
-            BtnShowPassword.TabIndex = 9;
-            BtnShowPassword.Text = "Show";
-            BtnShowPassword.UseVisualStyleBackColor = false;
-            BtnShowPassword.Click += BtnShowPassword_Click;
+            BtnShowpasswordLogin.BackColor = Color.Linen;
+            BtnShowpasswordLogin.Font = new Font("Bahnschrift Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnShowpasswordLogin.Location = new Point(115, 105);
+            BtnShowpasswordLogin.Name = "BtnShowpasswordLogin";
+            BtnShowpasswordLogin.Size = new Size(48, 23);
+            BtnShowpasswordLogin.TabIndex = 9;
+            BtnShowpasswordLogin.Text = "Show";
+            BtnShowpasswordLogin.UseVisualStyleBackColor = false;
+            BtnShowpasswordLogin.Click += BtnShowPassword_Click;
             // 
             // BtnLogin
             // 
@@ -179,6 +181,8 @@
             // 
             panel2.BackColor = Color.NavajoWhite;
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(BtnShowpasswordRepeat);
+            panel2.Controls.Add(BtnShowpasswordRegister);
             panel2.Controls.Add(BtnRegister);
             panel2.Controls.Add(TxtPasswordRegisterRepeated);
             panel2.Controls.Add(TxtPasswordRegister);
@@ -192,11 +196,35 @@
             panel2.Size = new Size(260, 308);
             panel2.TabIndex = 8;
             // 
+            // BtnShowpasswordRepeat
+            // 
+            BtnShowpasswordRepeat.BackColor = Color.Linen;
+            BtnShowpasswordRepeat.Font = new Font("Bahnschrift Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnShowpasswordRepeat.Location = new Point(125, 163);
+            BtnShowpasswordRepeat.Name = "BtnShowpasswordRepeat";
+            BtnShowpasswordRepeat.Size = new Size(48, 23);
+            BtnShowpasswordRepeat.TabIndex = 10;
+            BtnShowpasswordRepeat.Text = "Show";
+            BtnShowpasswordRepeat.UseVisualStyleBackColor = false;
+            BtnShowpasswordRepeat.Click += BtnShowpasswordRepeat_Click;
+            // 
+            // BtnShowpasswordRegister
+            // 
+            BtnShowpasswordRegister.BackColor = Color.Linen;
+            BtnShowpasswordRegister.Font = new Font("Bahnschrift Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnShowpasswordRegister.Location = new Point(125, 105);
+            BtnShowpasswordRegister.Name = "BtnShowpasswordRegister";
+            BtnShowpasswordRegister.Size = new Size(48, 23);
+            BtnShowpasswordRegister.TabIndex = 10;
+            BtnShowpasswordRegister.Text = "Show";
+            BtnShowpasswordRegister.UseVisualStyleBackColor = false;
+            BtnShowpasswordRegister.Click += BtnShowpasswordRegister_Click;
+            // 
             // BtnRegister
             // 
             BtnRegister.BackColor = Color.Linen;
             BtnRegister.Font = new Font("Bahnschrift Light", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnRegister.Location = new Point(92, 209);
+            BtnRegister.Location = new Point(83, 209);
             BtnRegister.Name = "BtnRegister";
             BtnRegister.Size = new Size(75, 23);
             BtnRegister.TabIndex = 10;
@@ -210,6 +238,7 @@
             TxtPasswordRegisterRepeated.Name = "TxtPasswordRegisterRepeated";
             TxtPasswordRegisterRepeated.Size = new Size(106, 23);
             TxtPasswordRegisterRepeated.TabIndex = 10;
+            TxtPasswordRegisterRepeated.UseSystemPasswordChar = true;
             // 
             // TxtPasswordRegister
             // 
@@ -217,6 +246,7 @@
             TxtPasswordRegister.Name = "TxtPasswordRegister";
             TxtPasswordRegister.Size = new Size(106, 23);
             TxtPasswordRegister.TabIndex = 10;
+            TxtPasswordRegister.UseSystemPasswordChar = true;
             // 
             // TxtUserRegister
             // 
@@ -260,6 +290,8 @@
         private TextBox TxtUserRegister;
         private Button BtnLogin;
         private Button BtnRegister;
-        private Button BtnShowPassword;
+        private Button BtnShowpasswordLogin;
+        private Button BtnShowpasswordRepeat;
+        private Button BtnShowpasswordRegister;
     }
 }

@@ -2,38 +2,43 @@ namespace LogIn
 {
     public partial class Form1 : Form
     {
+
         // Se utiliza para lograr saber si el boton ha sido tocado
-        bool btnClickShowPassword = false;
-
-
+        bool[] btnClickShowPassword = { false, false, false };
+        // Posiciones: 0 = password login, 1 = password register y 2 = password repeat.
+        
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void BtnShowPassword_Click(object sender, EventArgs e)
+        // Metodo generico para mostrar y no mostrar la contraseña
+        public void ShowPassword(TextBox textbox, int btn)
         {
-            if (!btnClickShowPassword)
+            if (!btnClickShowPassword[btn])
             {
-                TxtPasswordLogin.UseSystemPasswordChar = false;
-                btnClickShowPassword = true;
+                textbox.UseSystemPasswordChar = false;
+                btnClickShowPassword[btn] = true;
                 return;
             }
-            TxtPasswordLogin.UseSystemPasswordChar = true;
-            btnClickShowPassword = false;
+            textbox.UseSystemPasswordChar = true;
+            btnClickShowPassword[btn] = false;
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void BtnShowPassword_Click(object sender, EventArgs e)
         {
-            bool canContinue = LoginVerificaitons();
-            // Detiene la ejecion del metodo
-            if (!canContinue) { return; }
-
-
-
-            CleanTextBox();
+            ShowPassword(TxtPasswordLogin,0);
+        }
+        private void BtnShowpasswordRegister_Click(object sender, EventArgs e)
+        {
+            ShowPassword(TxtPasswordRegister, 1);
+        }
+        private void BtnShowpasswordRepeat_Click(object sender, EventArgs e)
+        {
+            ShowPassword(TxtPasswordRegisterRepeated, 2);
         }
 
+        // Metodo para validar entrada de datos en el login
         public bool LoginVerificaitons()
         {
             if (TxtUserLogin.Text.Length == 0 || TxtPasswordLogin.Text.Length == 0)
@@ -43,7 +48,16 @@ namespace LogIn
             }
             return true;
         }
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            bool canContinue = LoginVerificaitons();
+            // Detiene la ejecion del metodo
+            if (!canContinue) { return; }
 
+            CleanTextBox();
+        }
+
+        // Metodo para validad entrada de datos en el register
         public bool RegisterVerifications()
         {
             if (TxtUserRegister.Text.Length == 0 || TxtPasswordRegister.Text.Length == 0 || TxtPasswordRegisterRepeated.Text.Length == 0)
@@ -62,8 +76,14 @@ namespace LogIn
 
         }
 
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            bool canContinue = RegisterVerifications();
+            if (!canContinue) { return; }
+            CleanTextBox();
+        }
 
-
+        // Metodo para limpiar todas las text box
         public void CleanTextBox()
         {
             TxtUserLogin.Text = string.Empty;
@@ -73,17 +93,5 @@ namespace LogIn
             TxtPasswordRegisterRepeated.Text = string.Empty;
         }
 
-        private void BtnRegister_Click(object sender, EventArgs e)
-        {
-            bool canContinue = RegisterVerifications();
-            if (!canContinue) { return; }   
-
-
-
-
-
-
-            CleanTextBox();
-        }
     }
 }
