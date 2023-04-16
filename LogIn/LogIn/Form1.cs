@@ -1,17 +1,16 @@
+using LogIn.Models;
+using LogIn.Services;
 namespace LogIn
 {
     public partial class Form1 : Form
     {
-
         // Se utiliza para lograr saber si el boton ha sido tocado
         bool[] btnClickShowPassword = { false, false, false };
         // Posiciones: 0 = password login, 1 = password register y 2 = password repeat.
-        
         public Form1()
         {
             InitializeComponent();
         }
-
         // Metodo generico para mostrar y no mostrar la contraseña
         public void ShowPassword(TextBox textbox, int btn)
         {
@@ -54,6 +53,13 @@ namespace LogIn
             // Detiene la ejecion del metodo
             if (!canContinue) { return; }
 
+            // Creacion objeto para utilizar base de datos
+            UserInput aUser = new UserInput(TxtUserLogin.Text, TxtPasswordLogin.Text);
+            DB dB = new DB(aUser);
+            dB.DBSearch();
+            string mensaje = dB.ComparePassword();
+            MessageBox.Show(mensaje);
+
             CleanTextBox();
         }
 
@@ -80,6 +86,13 @@ namespace LogIn
         {
             bool canContinue = RegisterVerifications();
             if (!canContinue) { return; }
+
+            // Creacion objeto para utilizar base de datos
+            UserInput aUser = new UserInput(TxtUserRegister.Text, TxtPasswordRegister.Text);
+            DB db = new DB(aUser);
+            db.DBSearch();
+            string mensaje = db.AddUser();
+            MessageBox.Show(mensaje);
             CleanTextBox();
         }
 
