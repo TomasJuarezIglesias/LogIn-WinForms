@@ -54,10 +54,11 @@ namespace LogIn
             if (!canContinue) { return; }
 
             // Creacion objeto para utilizar base de datos
-            UserInput aUser = new UserInput(TxtUserLogin.Text, TxtPasswordLogin.Text);
-            DB dB = new DB(aUser);
-            dB.DBSearch();
-            string mensaje = dB.ComparePassword();
+            UserInput aUser = new(TxtUserLogin.Text, TxtPasswordLogin.Text);
+            DBSearch search = new(aUser);
+            search.Search();
+            ComparePassword compare = new(search);
+            string mensaje = compare.Compare();
             MessageBox.Show(mensaje);
 
             CleanTextBox();
@@ -88,11 +89,13 @@ namespace LogIn
             if (!canContinue) { return; }
 
             // Creacion objeto para utilizar base de datos
-            UserInput aUser = new UserInput(TxtUserRegister.Text, TxtPasswordRegister.Text);
-            DB db = new DB(aUser);
-            db.DBSearch();
-            string mensaje = db.AddUser();
+            UserInput aUser = new(TxtUserRegister.Text, TxtPasswordRegister.Text);
+            DBSearch search = new(aUser);
+            search.Search();
+            AddUser addUser = new(search);
+            string mensaje = addUser.Add();
             MessageBox.Show(mensaje);
+
             CleanTextBox();
         }
 
